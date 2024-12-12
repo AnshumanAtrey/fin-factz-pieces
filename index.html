@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trading Facts</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        text-align: center;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #1a237e;
+        margin-bottom: 30px;
+      }
+
+      .fact-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #fact-text {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        color: #333;
+      }
+
+      button {
+        padding: 12px 24px;
+        font-size: 1.1rem;
+        background-color: #1a237e;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #283593;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Trading Facts</h1>
+      <div class="fact-card">
+        <p id="fact-text">Click the button to see a trading fact!</p>
+      </div>
+      <button id="new-fact">Show New Fact</button>
+    </div>
+
+    <script>
+      const tradingFacts = {
+        trading_facts: [
+          {
+            id: 1,
+            fact: "The New York Stock Exchange (NYSE) was founded in 1792 under a buttonwood tree on Wall Street.",
+          },
+          {
+            id: 2,
+            fact: "The term 'bear market' comes from the way bears attack their prey by swiping their paws downward.",
+          },
+          {
+            id: 3,
+            fact: "The first stock ticker was invented in 1867 by Edward Calahan.",
+          },
+          {
+            id: 4,
+            fact: "The term 'bull market' derives from the way bulls attack by thrusting their horns upward.",
+          },
+          {
+            id: 5,
+            fact: "The forex market trades approximately $6.6 trillion per day as of 2022.",
+          },
+          {
+            id: 6,
+            fact: "The shortest trading day in NYSE history was on September 11, 2001.",
+          },
+          {
+            id: 7,
+            fact: "The term 'Blue Chip' comes from poker, where blue chips traditionally held the highest value.",
+          },
+          {
+            id: 8,
+            fact: "The first mutual fund was created in 1924.",
+          },
+          {
+            id: 9,
+            fact: "High-frequency trading can execute trades in microseconds.",
+          },
+          {
+            id: 10,
+            fact: "The term 'Wall Street' comes from an actual wall built in 1653 to protect New Amsterdam (now New York).",
+          },
+          {
+            id: 11,
+            fact: "The longest bull market in history lasted from 2009 to 2020, lasting 11 years.",
+          },
+          {
+            id: 12,
+            fact: "The first cryptocurrency, Bitcoin, was created in 2009.",
+          },
+          {
+            id: 13,
+            fact: "The phrase 'ticker symbol' comes from the sound made by the original telegraph machines.",
+          },
+          {
+            id: 14,
+            fact: "The stock market crash of 1929 led to the Great Depression.",
+          },
+          {
+            id: 15,
+            fact: "The term 'Black Monday' refers to October 19, 1987, when global stock markets crashed.",
+          },
+          {
+            id: 16,
+            fact: "The first electronic stock market was NASDAQ, launched in 1971.",
+          },
+          {
+            id: 17,
+            fact: "The Japanese candlestick charting technique was developed in the 18th century.",
+          },
+          {
+            id: 18,
+            fact: "The term 'IPO' stands for Initial Public Offering.",
+          },
+          {
+            id: 19,
+            fact: "The first stock exchange was established in Amsterdam in 1602.",
+          },
+          {
+            id: 20,
+            fact: "More than 50% of Americans own stocks, either directly or through mutual funds.",
+          },
+        ],
+      };
+
+      const factText = document.getElementById("fact-text");
+      const newFactButton = document.getElementById("new-fact");
+
+      function getRandomFact() {
+        const facts = tradingFacts.trading_facts;
+        const randomIndex = Math.floor(Math.random() * facts.length);
+        return facts[randomIndex].fact;
+      }
+
+      function displayNewFact() {
+        factText.textContent = getRandomFact();
+      }
+
+      // Display initial fact
+      displayNewFact();
+
+      // Add click event listener to button
+      newFactButton.addEventListener("click", displayNewFact);
+    </script>
+  </body>
+</html>
