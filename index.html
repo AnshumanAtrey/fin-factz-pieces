@@ -1,79 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trading Facts</title>
+
+    <!-- SEO Meta Tags -->
+    <title>FinFactz - Trading & Financial Market Facts</title>
+    <meta
+      name="description"
+      content="Discover fascinating facts about trading, stock markets, and financial history. Learn about Wall Street, market crashes, trading terminology, and more through our curated collection of financial facts."
+    />
+    <meta
+      name="keywords"
+      content="trading facts, financial markets, stock market history, Wall Street, NYSE, trading education, financial literacy"
+    />
+    <meta name="author" content="Anshuman Atrey" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta
+      property="og:title"
+      content="FinFactz - Trading & Financial Market Facts"
+    />
+    <meta
+      property="og:description"
+      content="Discover fascinating facts about trading, stock markets, and financial history. Updated daily with interesting financial market insights."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://anshumanatrey.github.io/fin-factz-pieces/"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      /* Update these CSS rules */
+      h1 {
+        font-family: "Space Mono", monospace;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--heading-color);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      #fact-text {
+        font-family: "Space Mono", monospace;
+        font-size: 1.25rem;
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      /* Keep the original font family rule for other elements */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+        transition: all 0.3s ease;
+      }
+      /* Light theme */
+      html[data-theme="light"] {
+        --bg-color: #ffffff;
+        --card-bg: #ffffff;
+        --text-color: #1a1a1a;
+        --heading-color: #000000;
+        --button-bg: #1a1a1a;
+        --button-text: #ffffff;
+        --grid-color: #4f4f4f2e;
+      }
+
+      /* Dark theme */
+      html[data-theme="dark"] {
+        --bg-color: #000000;
+        --card-bg: #1a1a1a;
+        --text-color: #ffffff;
+        --heading-color: #ffffff;
+        --button-bg: #ffffff;
+        --button-text: #000000;
+        --grid-color: #8080800a;
       }
 
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f2f5;
         min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+
+      .background-pattern {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(
+            to right,
+            var(--grid-color) 1px,
+            transparent 1px
+          ),
+          linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+        background-size: 14px 24px;
+        z-index: -1;
+      }
+
+      .gradient-overlay {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: -10%;
+        height: 1000px;
+        width: 1000px;
+        margin: 0 auto;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle 400px at 50% 300px,
+          #fbfbfb36,
+          transparent
+        );
+        z-index: -1;
       }
 
       .container {
-        text-align: center;
-        padding: 20px;
-      }
-
-      h1 {
-        color: #1a237e;
-        margin-bottom: 30px;
+        max-width: 800px;
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
       }
 
       .fact-card {
-        background-color: white;
-        padding: 30px;
-        border-radius: 10px;
+        background-color: var(--card-bg);
+        padding: 2rem;
+        border-radius: 1rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        min-height: 150px;
+        margin-bottom: 2rem;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .button-container {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        background-color: var(--button-bg);
+        color: var(--button-text);
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+      }
+
+      #theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-
-      #fact-text {
-        font-size: 1.2rem;
-        line-height: 1.5;
-        color: #333;
-      }
-
-      button {
-        padding: 12px 24px;
-        font-size: 1.1rem;
-        background-color: #1a237e;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      button:hover {
-        background-color: #283593;
-      }
     </style>
+    <!-- Rest of your existing head content... -->
   </head>
   <body>
+    <div class="background-pattern"></div>
+    <div class="gradient-overlay"></div>
+
     <div class="container">
       <h1>Trading Facts</h1>
       <div class="fact-card">
-        <p id="fact-text">Click the button to see a trading fact!</p>
+        <p id="fact-text">Click any button to see a trading fact!</p>
       </div>
-      <button id="new-fact">Show New Fact</button>
+      <div class="button-container">
+        <button id="prev-fact">Previous</button>
+        <button id="random-fact">Random</button>
+        <button id="next-fact">Next</button>
+      </div>
     </div>
 
+    <button id="theme-toggle">
+      <span>🌙</span>
+    </button>
+
     <script>
+      let currentFactIndex = 0;
+      const factText = document.getElementById("fact-text");
+
       const tradingFacts = {
         trading_facts: [
           {
@@ -158,25 +290,51 @@
           },
         ],
       };
-
-      const factText = document.getElementById("fact-text");
-      const newFactButton = document.getElementById("new-fact");
-
-      function getRandomFact() {
-        const facts = tradingFacts.trading_facts;
-        const randomIndex = Math.floor(Math.random() * facts.length);
-        return facts[randomIndex].fact;
+      const facts = tradingFacts.trading_facts;
+      function showFact(index) {
+        currentFactIndex = index;
+        factText.textContent = facts[index].fact;
       }
 
-      function displayNewFact() {
-        factText.textContent = getRandomFact();
+      function nextFact() {
+        currentFactIndex = (currentFactIndex + 1) % facts.length;
+        showFact(currentFactIndex);
       }
 
-      // Display initial fact
-      displayNewFact();
+      function prevFact() {
+        currentFactIndex = (currentFactIndex - 1 + facts.length) % facts.length;
+        showFact(currentFactIndex);
+      }
 
-      // Add click event listener to button
-      newFactButton.addEventListener("click", displayNewFact);
+      function randomFact() {
+        let newIndex;
+        do {
+          newIndex = Math.floor(Math.random() * facts.length);
+        } while (newIndex === currentFactIndex);
+        showFact(newIndex);
+      }
+
+      document.getElementById("next-fact").addEventListener("click", nextFact);
+      document.getElementById("prev-fact").addEventListener("click", prevFact);
+      document
+        .getElementById("random-fact")
+        .addEventListener("click", randomFact);
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute("data-theme");
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        document.querySelector("#theme-toggle span").textContent =
+          newTheme === "light" ? "🌙" : "☀️";
+      });
+
+      // Initialize
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      document.querySelector("#theme-toggle span").textContent =
+        savedTheme === "light" ? "🌙" : "☀️";
+      showFact(0);
     </script>
   </body>
 </html>
